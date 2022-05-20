@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import ReviewDetails from "../screens/ReviewDetails";
+import Header from "../shared/Header";
 
 const Stack = createStackNavigator();
 
@@ -18,10 +19,14 @@ export default function HomeStack() {
       }}
     >
       <Stack.Screen
-        name="Home"
+        name="HomePage"
         component={Home}
-        options={{
-          title: "GameZone",
+        options={(props) => {
+          return {
+            headerTitle: () => {
+              return <Header navigation={props.navigation} title="GameZone" />;
+            },
+          };
         }}
       />
       <Stack.Screen
